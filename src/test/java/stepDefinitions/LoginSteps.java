@@ -83,9 +83,8 @@ public class LoginSteps extends BaseClass {
 
 	@When("click on customer menu Item")
 	public void click_on_customer_menu_item() throws InterruptedException {
-
-		cp.cutomerList("Customers");
-
+      BaseClass.listOfoptions("Customers");
+	
 	}
 
 	@When("click on add new button")
@@ -105,12 +104,12 @@ public class LoginSteps extends BaseClass {
        cp.addCustomerDetails();
        cp.selectGender();
        cp.customerrole("Registered","Guests");
-       cp.saveCustomer();
+      
 	}
 
 	@When("click save button")
 	public void click_save_button() {
-
+		  cp.saveCustomer();
 	}
 
 	@Then("User can view confirmation message {string}")

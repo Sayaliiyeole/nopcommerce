@@ -25,8 +25,6 @@ public class CustomerPage extends BaseClass {
 	@FindBy(xpath = "(//a[@class='nav-link'])[21]")
 	WebElement customerbtn;
 
-	By customeroption = By.xpath("//li[@class='nav-item']");
-
 	@FindBy(id = "Email")
 	WebElement emailid;
 	@FindBy(id = "Password")
@@ -47,25 +45,11 @@ public class CustomerPage extends BaseClass {
 	WebElement addnewcustomer;
 	@FindBy(xpath = "//select[@id='SelectedCustomerRoleIds']")
 	WebElement customerole;
-	@FindBy (xpath = "//button[@name='save']")
+	@FindBy(xpath = "//button[@name='save']")
 	WebElement savebutton;
 
 	public void clickOncustomerButton() {
 		customerbtn.click();
-	}
-
-	public void cutomerList(String option) throws InterruptedException {
-
-		List<WebElement> cutomeroptions = ldriver.findElements(customeroption);
-		for (WebElement e : cutomeroptions) {
-
-			if (e.getText().equalsIgnoreCase(option)) {
-				System.out.println(e.getText());
-				Thread.sleep(4000);
-				e.click();
-				break;
-			}
-		}
 	}
 
 	public void clickOnAddNewCstm() {
@@ -79,24 +63,25 @@ public class CustomerPage extends BaseClass {
 		fname.sendKeys(prop.getProperty("FirstName"));
 		lname.sendKeys(prop.getProperty("LastName"));
 		date.sendKeys(prop.getProperty("DateOfBrith"));
-	
+
 	}
 
 	public void selectGender() {
-		
-		if(prop.getProperty("Gender").equalsIgnoreCase("Female")) {
+
+		if (prop.getProperty("Gender").equalsIgnoreCase("Female")) {
 			Fgender.click();
-		}
-		else {
+		} else {
 			Mgender.click();
 		}
-		
+
 	}
+
 	public void customerrole(String value1, String value2) {
-		Select list = new Select(customerole);
-		list.deselectByVisibleText(value1);
-		list.selectByVisibleText(value2);
+		Select listofrole = new Select(customerole);
+		listofrole.deselectByVisibleText(value1);
+		listofrole.selectByVisibleText(value2);
 	}
+
 	public void saveCustomer() {
 		savebutton.click();
 	}
