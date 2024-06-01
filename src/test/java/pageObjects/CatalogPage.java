@@ -10,14 +10,15 @@ public class CatalogPage {
 	WebDriver driver;
 
 	public CatalogPage(WebDriver driver) {
-		
+
 		driver = driver;
 		PageFactory.initElements(driver, this);
-		}
-	
-	@FindBy(xpath ="(//a[@class='nav-link'])[4]")
-	WebElement catalogview;
+	}
 
-	
-	
+	@FindBy(xpath = "(//a[@class='nav-link'])[4]")
+	WebElement catalogbutton;
+
+	public void catalogButton() {
+		catalogbutton.click();
+	}
 }
