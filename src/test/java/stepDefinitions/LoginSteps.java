@@ -1,9 +1,12 @@
 package stepDefinitions;
 
+import java.io.IOException;
+
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,9 +17,14 @@ import pageObjects.LoginPage;
 
 public class LoginSteps extends BaseClass {
 
+	@Before
+	public void beforeMethods() throws IOException {
+		BaseClass.property();
+	}
+	
 	@After
 	public void closebrowser() {
-		driver.close();
+		//driver.close();
 	}
 
 	@Given("User Launch Chrome browser")
@@ -94,7 +102,10 @@ public class LoginSteps extends BaseClass {
 
 	@When("User enter customer infor")
 	public void user_enter_customer_infor() {
-
+       cp.addCustomerDetails();
+       cp.selectGender();
+       cp.customerrole("Registered","Guests");
+       cp.saveCustomer();
 	}
 
 	@When("click save button")

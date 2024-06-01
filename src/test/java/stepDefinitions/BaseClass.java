@@ -1,5 +1,9 @@
 package stepDefinitions;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 
@@ -12,6 +16,7 @@ public class BaseClass {
 	public WebDriver driver;
 	public LoginPage lp;
 	public CustomerPage cp ;
+    public static Properties prop;
 	
 	public static String randomString() {
 		
@@ -19,6 +24,15 @@ public class BaseClass {
 		return randomString;
 		
 	}
+	
+	public  static void property() throws IOException {
+		
+		FileInputStream fis = new FileInputStream("C:\\Users\\isaya\\eclipse-workspace\\FrameWork\\Test Data\\config.properties");
+		 prop = new Properties();
+		prop.load(fis);
+	
+	}
+	
 	
 	
 }
